@@ -5,11 +5,15 @@ var nick = (~~(Math.random() * 1e9)).toString(36);
 
 function sendMessage(e) {
     var key = e.keyCode || e.which;
-    var input = document.getElementById("chat_input");
-    if (key == 13 && input.value !== "") {
+    var input = document.getElementById('chat_input');
+    if (key == 13 && input.value !== '') {
         e.preventDefault();
-        engine.write(nick + ">  " + input.value);
-        input.value = "";
+        if (input.value.indexOf('/name ') === 0) {
+            nick = input.value.replace('/name ', '');
+        } else {
+            engine.write(nick + '>  ' + input.value);
+        }
+        input.value = '';
     }
 }
 

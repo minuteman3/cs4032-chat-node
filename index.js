@@ -1,6 +1,5 @@
 var fs = require('fs');
 var http = require('http');
-//var level = require('level');
 var db = require('memdb')();
 var Engine = require('engine.io-stream');
 var livestream = require('level-live-stream');
@@ -16,11 +15,6 @@ var server = http.createServer(function(req,res) {
         fs.createReadStream(__dirname + "/index.html").pipe(res);
     }
 });
-
-
-//var db = level(__dirname + '/db', {
-    //valueEncoding: 'json'
-//});
 
 livestream.install(db);
 
