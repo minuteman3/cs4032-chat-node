@@ -1,0 +1,19 @@
+{
+  "name": "nodetalk",
+  "version": "0.0.0",
+  "description": "simple node chat client for dist systems CS4031",
+  "main": "index.js",
+  "dependencies": {
+    "browserify": "~2.33.0",
+    "engine.io-stream": "~0.4.1",
+    "memdb": "~0.0.1",
+    "level-live-stream": "~1.4.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "Miles McGuire",
+  "license": "MIT"
+}
