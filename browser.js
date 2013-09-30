@@ -11,15 +11,32 @@ function sendMessage(e) {
         if (input.value.indexOf('/name ') === 0) {
             nick = input.value.replace('/name ', '');
         } else {
-            engine.write(nick + '>  ' + input.value);
+            engine.write(nick + '\x00' + input.value);
         }
         input.value = '';
     }
 }
 
-engine.on('data', function(data) {
-    document.getElementById('chat').innerHTML = '<p>'+data+'</p>' + document.getElementById('chat').innerHTML;
-});
+var i = 0;
+function rowColor() {
+    if (i++ % 2) return 'style="background-color: #CCCCCC"';
+    else return 'style="background-color:#FFFFFF"';
+}
+function makeRow(sender, message) {
+    return '<div class="message" ' + rowColor() + '>'
+    + '<span class="sender">'
+    + sender + ' >'
+    + '</span>' 
+    + '&nbsp;'
+    + '<span class="text">'
+    + message
+    + '</span></div>';
+}
 
+engine.on('data', function(data) {
+    var data = data.split('\x00');
+    var el = document.getElementById('chat');
+    el.innerHTML = makeRow(data[0], data[1]) + el.innerHTML;
+});
 window.engine = engine;
 window.sendMessage = sendMessage;

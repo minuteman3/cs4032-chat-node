@@ -1,0 +1,10 @@
+#chat_input {
+    width: 100%;
+}
+
+html body { height: 100%; }
+
+#chat {
+    height: 100%;
+    padding: 1%;
+}
