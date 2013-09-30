@@ -10,6 +10,9 @@ function sendMessage(e) {
         e.preventDefault();
         if (input.value.indexOf('/name ') === 0) {
             nick = input.value.replace('/name ', '');
+            var el = document.getElementById('chat');
+                el.innerHTML = makeRow("Your name changed to", nick) + el.innerHTML;
+
         } else {
             engine.write(nick + '\x00' + input.value);
         }
