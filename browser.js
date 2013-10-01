@@ -41,5 +41,7 @@ engine.on('data', function(data) {
     var el = document.getElementById('chat');
     el.innerHTML = makeRow(data[0], data[1]) + el.innerHTML;
 });
+
+document.getElementById('chat_input').disabled = false;
 window.engine = engine;
 window.sendMessage = sendMessage;
